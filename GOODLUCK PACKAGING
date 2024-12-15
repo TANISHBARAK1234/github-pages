@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodluck Packaging - Order Your Boxes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e6f7ff, #ccf2ff);
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #003366, #00509e);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        header .welcome {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            margin-top: 1rem;
+        }
+        header .jai-shri-ram {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff9900;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #003366;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 1rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #003f7f;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #003366;
+            color: white;
+            margin-top: 2rem;
+        }
+        .form-group {
+            flex: 1 1 calc(50% - 1.5rem);
+            min-width: 300px;
+        }
+        .full-width {
+            flex: 1 1 100%;
+        }
+        .model-viewer {
+            width: 100%;
+            height: 400px;
+            margin-top: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .popup {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #ffcc00;
+            color: #333;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+    </style>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="jai-shri-ram">जय श्री राम</div>
+        <h1>Goodluck Packaging</h1>
+        <p>Your Trusted Partner in Quality Corrugated Boxes</p>
+        <div class="welcome">नमस्ते! Welcome to our website.</div>
+    </header>
+
+    <div class="container">
+        <h2>Place Your Order for Corrugated Boxes</h2>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">Let us deliver high-quality printed and non-printed boxes tailored to your needs.</p>
+
+        <form action="/submit-order" method="post">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Shipping Address:</label>
+                <textarea id="address" name="address" rows="4" placeholder="Enter your full address" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company Name (if applicable):</label>
+                <input type="text" id="company" name="company" placeholder="Enter your company name">
+            </div>
+
+            <div class="form-group">
+                <label for="box-type">Box Type:</label>
+                <select id="box-type" name="box-type" required>
+                    <option value="printed">Printed</option>
+                    <option value="non-printed">Non-Printed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="model-selector">Preview Your Custom Printed Box:</label>
+                <model-viewer id="model-viewer" class="model-viewer" src="https://example.com/printed-box-with-xyzmxwsuchioh.glb" alt="3D Model of Printed Box" auto-rotate camera-controls>
+                </model-viewer>
+                <script>
+                    const boxTypeSelector = document.getElementById('box-type');
+                    const modelViewer = document.getElementById('model-viewer');
+
+                    boxTypeSelector.addEventListener('change', function() {
+                        if (boxTypeSelector.value === 'printed') {
+                            modelViewer.setAttribute('src', 'https://example.com/printed-box-with-xyzmxwsuchioh.glb');
+                        } else {
+                            modelViewer.setAttribute('src', 'https://example.com/plain-box.glb');
+                        }
+                    });
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" min="1" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments" rows="5" placeholder="Enter any special instructions"></textarea>
+            </div>
+
+            <div class="form-group full-width">
+                <button type="submit">Place Order</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Goodluck Packaging | All Rights Reserved</p>
+        <p>Contact: Sunil Kumar | Phone: +91-9671206971 ; 9671606971 or 999206971 | Email: Goodluck1763@gmail.com</p>
+    </footer>
+
+    <div class="popup" onclick="alert('नमस्ते! Welcome to Goodluck Packaging.')">
+        नमस्ते! 
+    </div>
+</body>
+</html>
